@@ -3,7 +3,9 @@
 namespace Database\Seeders;
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+use App\Models\Tenant;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\DB;
 
 class DatabaseSeeder extends Seeder
 {
@@ -14,6 +16,9 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
+        DB::statement('drop database tenantfoo;');
+        $tenant = Tenant::create(['id' => 'foo']);
+        $tenant->domains()->create(['domain' => 'foo']);
         // \App\Models\User::factory(10)->create();
 
         // \App\Models\User::factory()->create([
