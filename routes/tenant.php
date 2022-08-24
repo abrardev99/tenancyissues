@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 use Illuminate\Support\Facades\Route;
 use Stancl\Tenancy\Middleware\InitializeTenancyByDomainOrSubdomain;
+use Stancl\Tenancy\Middleware\InitializeTenancyByPath;
 use Stancl\Tenancy\Middleware\PreventAccessFromCentralDomains;
 
 /*
@@ -18,12 +19,16 @@ use Stancl\Tenancy\Middleware\PreventAccessFromCentralDomains;
 |
 */
 
-Route::middleware([
-    'web',
-    InitializeTenancyByDomainOrSubdomain::class,
-    PreventAccessFromCentralDomains::class,
-])->group(function () {
-    Route::get('/', function () {
-        return 'This is your multi-tenant application. The id of the current tenant is ' . tenant('id');
-    });
+Route::group([
+    'prefix' => '/{tenant}',
+    'middleware' => ['web', \Stancl\Tenancy\Middleware\InitializeTenancyByPath::class],
+    'as' => 'tenant.',
+], function () {
+    Route::get('path', function (){
+        dd( route('tenant.path2') );
+    })->name('path');
+
+    Route::get('path2', function (){
+
+    })->name('path2');
 });
