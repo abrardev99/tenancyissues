@@ -43,12 +43,13 @@ class RunThree extends Command
      */
     public function handle()
     {
-        $subCommandArgs = explode(' ', $this->argument('commandname'));
+        $subCommand = explode(' ', $this->argument('commandname'));
+
         // Add "artisan" as first command because ArgvInput will remove the first argument
-        array_unshift($subCommandArgs , 'artisan');
+        array_unshift($subCommand , 'artisan');
 
         app(Kernel::class)->handle(
-            new ArgvInput($subCommandArgs),
+            new ArgvInput($subCommand),
             new ConsoleOutput
         );
 
