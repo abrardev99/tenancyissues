@@ -67,9 +67,5 @@ class Kernel extends HttpKernel
         'verified' => \Illuminate\Auth\Middleware\EnsureEmailIsVerified::class,
     ];
 
-    protected $middlewarePriority = [
-        Middleware\PreventAccessFromCentralDomains::class,
-        Middleware\InitializeTenancyByPath::class,
-        SubstituteBindings::class
-    ];
+
 }

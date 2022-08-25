@@ -29,8 +29,9 @@ Route::group([
     'as' => 'tenant.',
 ], function () {
     Route::get('path', function (){
-
-        dd( route('tenant.path2') );
+//        ray(app(\Illuminate\Contracts\Http\Kernel::class)->getMiddlewarePriority());
+        return route('tenant.path2');
+        return tenant()->getTenantKey();
     })->name('path');
 
     Route::get('path2', function (){
