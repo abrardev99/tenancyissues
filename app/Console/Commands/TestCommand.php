@@ -27,9 +27,10 @@ class TestCommand extends Command
      */
     public function handle()
     {
+        $age = $this->ask('What is your age?');
         $password = $this->secret('What is the password?');
 
-        $this->line($this->argument('name') . ' ' . $password . ' a' . $this->option('a'));
+        $this->line($this->argument('name') . '('.$age.') ' . $password . ' a' . $this->option('a'));
 
         return 0;
     }
