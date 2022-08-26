@@ -48,11 +48,9 @@ class RunThree extends Command
         // Add "artisan" as first command because ArgvInput will remove the first argument
         array_unshift($subCommand , 'artisan');
 
-        app(Kernel::class)->handle(
+        return app(Kernel::class)->handle(
             new ArgvInput($subCommand),
             new ConsoleOutput
         );
-
-        return 0;
     }
 }

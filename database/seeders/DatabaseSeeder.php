@@ -17,8 +17,12 @@ class DatabaseSeeder extends Seeder
     public function run()
     {
         DB::statement('drop database tenantfoo;');
-        $tenant = Tenant::create(['id' => 'foo']);
-        $tenant->domains()->create(['domain' => 'foo']);
+        $tenant1 = Tenant::create(['id' => 'foo']);
+        $tenant1->domains()->create(['domain' => 'foo']);
+
+        DB::statement('drop database tenantbar;');
+        $tenant2 = Tenant::create(['id' => 'bar']);
+        $tenant2->domains()->create(['domain' => 'bar']);
         // \App\Models\User::factory(10)->create();
 
         // \App\Models\User::factory()->create([
