@@ -38,15 +38,18 @@
 
             <div class="max-w-6xl mx-auto sm:px-6 lg:px-8">
                 <div class="flex justify-center pt-8 sm:justify-start sm:pt-0">
-                    {{ dd(session()) }}
                     @if(session()->has('tenancy_impersonated_by'))
                         You are impersonating as: {{ session()->get('tenancy_impersonated_by') }}
 
-                        <a href="{{ route('tenant.leave') }}"><u> {{ route('tenant.leave') }}</u></a>
+                        <a href="{{ route('tenant.leave') }}">&nbsp;<u>{{ route('tenant.leave') }}</u></a>
                         <br>
                     @endif
+                </div>
 
+                <div class="max-w-6xl mx-auto sm:px-6 lg:px-8">
+                <div class="flex justify-center pt-8 sm:justify-start sm:pt-0">
                     Tenant key: {{ tenant('id') }}
+                </div>
                 </div>
 
                 <div class="mt-8 bg-white dark:bg-gray-800 overflow-hidden shadow sm:rounded-lg">
