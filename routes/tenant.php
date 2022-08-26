@@ -24,7 +24,8 @@ Route::middleware([
     PreventAccessFromCentralDomains::class,
 ])->group(function () {
     Route::get('/', function () {
-        dd(asset('file.txt'), tenant_asset('file.txt'));
+
+        return view('welcome');
         return 'This is your multi-tenant application. The id of the current tenant is ' . tenant('id');
     });
 });
