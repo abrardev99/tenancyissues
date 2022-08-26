@@ -3,9 +3,12 @@
 namespace Database\Seeders;
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+use App\Models\TenantUser;
 use App\Models\Tenant;
+use App\Models\User;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Hash;
 
 class DatabaseSeeder extends Seeder
 {
@@ -16,6 +19,8 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
+        User::create(['name' => 'Abrar', 'email' => 'cental@demo.com', 'password' => Hash::make('password')]);
+
         DB::statement('drop database tenantfoo;');
         $tenant = Tenant::create(['id' => 'foo']);
         $tenant->domains()->create(['domain' => 'foo']);

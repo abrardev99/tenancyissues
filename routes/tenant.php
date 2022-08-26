@@ -29,8 +29,7 @@ Route::middleware([
     })->name('tenant.home');
 
     Route::get('impersonate/leave', function (){
-        auth()->logout();
-        session()->forget('tenancy_impersonated_by');
+        UserImpersonation::leaveImpersonation();
 
         return redirect(config('app.url'));
     })->name('tenant.leave');

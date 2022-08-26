@@ -18,6 +18,10 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::get('/dashboard', function () {
+    return view('dashboard');
+})->middleware(['auth'])->name('dashboard');
+
 Route::get('/imper', function (){
     $tenant = Tenant::first();
     $domain = $tenant->domains->first()->domain;
@@ -27,3 +31,5 @@ Route::get('/imper', function (){
 
     return redirect("http://$domain/impersonate/{$token}");
 });
+
+require __DIR__.'/auth.php';
