@@ -16,7 +16,7 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        DB::statement('drop database tenantfoo;');
+        DB::statement('drop database if exists tenantfoo;');
         $tenant = Tenant::create(['id' => 'foo']);
         $tenant->domains()->create(['domain' => 'foo']);
         // \App\Models\User::factory(10)->create();
