@@ -24,7 +24,6 @@ Route::group([
     'middleware' => [
         'web',
         \Stancl\Tenancy\Middleware\InitializeTenancyByPath::class,
-//        \App\Http\Middleware\SetDefaultTenantForUrls::class
     ],
     'as' => 'tenant.',
 ], function () {
