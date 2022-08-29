@@ -14,5 +14,6 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
+    throw new \Stancl\Tenancy\Exceptions\TenantCouldNotBeIdentifiedByIdException(1);
     return view('welcome');
 });
